@@ -39,6 +39,9 @@ let activeSlide = 0;
 const sliderImagesEl = document.querySelector('.slider .images');
 const prevEl = document.querySelector('.prev')
 const nextEl = document.querySelector('.next')
+let slideTitle = document.getElementById("obj-title");
+let slideDesc = document.getElementById("img-descr");
+
 
 //console.log(sliderImagesEl);
 
@@ -100,10 +103,12 @@ for (let i = 0; i < slides.length; i++) {
 // intercept click on the next icon 
 nextEl.addEventListener('click', function(){
   console.log('cliccato su next');
+  
 
   // select the current slide
   const currentSlide = slidesImages[activeSlide]
   console.log(currentSlide);
+  console.log(activeSlide);
   // remove the active class from the current slide
   currentSlide.classList.remove('active')
 
@@ -113,6 +118,7 @@ nextEl.addEventListener('click', function(){
   // remove the active class from the active thumb
   currentThumb.classList.remove('active')
 
+  
   
   // activeSlide = 4
 
@@ -129,7 +135,10 @@ nextEl.addEventListener('click', function(){
   const nextSlide = slidesImages[activeSlide]
   console.log(nextSlide);
   // add the active class to the next slide
-  nextSlide.classList.add('active')
+  nextSlide.classList.add('active');
+  slideTitle.innerHTML = `${slides[activeSlide].title}`;
+  slideDesc.innerHTML = `${slides[activeSlide].text}`;
+  
 
   console.log(activeSlide);
   /* TODO */
@@ -150,11 +159,13 @@ nextEl.addEventListener('click', function(){
 // activeSlide = 0
 prevEl.addEventListener('click', function () {
   console.log('cliccato su prev');
+ 
 
 
   // select the current slide
   const currentSlide = slidesImages[activeSlide]
   console.log(currentSlide);
+
   // remove the active class from the current slide
   currentSlide.classList.remove('active')
 
@@ -166,7 +177,8 @@ prevEl.addEventListener('click', function () {
       activeSlide--
   }
   
-  
+  slideTitle.innerHTML = `${slides[activeSlide].title}`;
+  slideDesc.innerHTML = `${slides[activeSlide].text}`;
   console.log(activeSlide);
 
 
